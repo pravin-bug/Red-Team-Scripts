@@ -1,0 +1,6 @@
+$cred = Get-Credential "domain\username";
+Invoke-Command -ScriptBlock {
+    Copy-Item "path\to\script.ps1" -Destination "C:\" -Force;
+    } -Credential $cred;
+
+Start-Process Powershell -Argumentlist '-ExecutionPolicy Bypass -NoProfile -File "C:\script.ps1"' -Verb RunAs;
